@@ -2,6 +2,10 @@
 ```bash
 make run
 ```
+# Остановка проекта
+```bash
+make stop
+```
 # Отправка сообщений в очередь
 ```bash
 make push

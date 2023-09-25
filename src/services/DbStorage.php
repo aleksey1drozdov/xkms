@@ -8,7 +8,7 @@ use app\base\db\MysqlConnection;
 use PDO;
 
 /**
- *
+ * DbStorage
  */
 class DbStorage
 {

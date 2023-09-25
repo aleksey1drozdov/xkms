@@ -17,7 +17,6 @@ services:
       - php
     command: nginx -g "daemon off;"
 
-# TODO supervisor start on build problem
   php:
     container_name: php-${ENV}
     build:
@@ -61,10 +60,3 @@ services:
     depends_on:
       - db
     restart: always
-
-  adminer:
-    image: adminer
-    ports:
-      - 8083:8080
-    depends_on:
-      - db

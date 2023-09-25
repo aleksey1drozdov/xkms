@@ -14,7 +14,6 @@ use Psr\Log\LoggerInterface;
  */
 class Publisher
 {
-    private string $queue;
     private string $exchange;
     private $channel;
     private LoggerInterface $logger;

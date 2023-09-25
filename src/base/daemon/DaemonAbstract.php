@@ -6,7 +6,7 @@ namespace app\base\daemon;
 use Psr\Log\LoggerInterface;
 
 /**
- *
+ * DaemonAbstract
  */
 abstract class DaemonAbstract implements DaemonInterface
 {
@@ -36,7 +36,10 @@ abstract class DaemonAbstract implements DaemonInterface
         }
     }
 
-    final protected function dispatch()
+    /**
+     * @return void
+     */
+    final protected function dispatch(): void
     {
         pcntl_signal_dispatch();
     }
@@ -139,7 +142,7 @@ abstract class DaemonAbstract implements DaemonInterface
      */
     final public function lifeCircle(): void
     {
-        do{
+        do {
             $this->prepare();
             do {
                 $this->work();

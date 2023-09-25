@@ -17,16 +17,15 @@ class ClickhouseConnection extends PDO
      */
     public static function connection(): self
     {
-        if(empty(self::$connection)) {
+        if (empty(self::$connection)) {
             $dsn = sprintf(
                 'mysql:host=%s;dbname=%s;port=%s',
                 getenv('DB_CLICKHOUSE_HOST'),
                 getenv('DB_CLICKHOUSE_DBNAME'),
-                getenv('DB_CLICKHOUSE_PORT')
+                getenv('DB_CLICKHOUSE_PORT'),
             );
             self::$connection = new self($dsn, getenv('DB_CLICKHOUSE_USER'));
         }
         return self::$connection;
     }
-
 }

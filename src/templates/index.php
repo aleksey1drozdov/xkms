@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 /**
-* @var array $mysqlData
-* @var array $clickhouseData
-*/
+ * @var array $mysqlData
+ * @var array $clickhouseData
+ */
 ?>
 <div style="display: inline-block; width: 100%">
     <div style="display: inline-block; float: left">
@@ -22,15 +22,15 @@ declare(strict_types=1);
             </tr>
             </thead>
             <tbody>
-            <?foreach ($mysqlData as $row):?>
-            <tr>
-                <td><?=$row['created_minute']?></td>
-                <td><?=$row['count']?></td>
-                <td><?=(int)$row['avg']?></td>
-                <td><?=$row['min_created_at']?></td>
-                <td><?=$row['max_created_at']?></td>
-            </tr>
-            <?endforeach;?>
+            <? foreach ($mysqlData as $row): ?>
+                <tr>
+                    <td><?= $row['created_minute'] ?></td>
+                    <td><?= $row['count'] ?></td>
+                    <td><?= (int)$row['avg'] ?></td>
+                    <td><?= $row['min_created_at'] ?></td>
+                    <td><?= $row['max_created_at'] ?></td>
+                </tr>
+            <? endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -49,15 +49,17 @@ declare(strict_types=1);
             </tr>
             </thead>
             <tbody>
-            <?foreach ($clickhouseData as $row):?>
+            <? foreach ($clickhouseData as $row): ?>
                 <tr>
-                    <td><?=$row['created_minute']?></td>
-                    <td><?=$row['count']?></td>
-                    <td><?=(int)$row['avg']?></td>
-                    <td><?=$row['min_created_at']?></td>
-                    <td><?=$row['max_created_at']?></td>
+                    <td><?= $row['created_minute'] ?></td>
+                    <td><?= $row['count'] ?></td>
+                    <td><?= (int)$row['avg'] ?></td>
+                    <td><?= $row['min_created_at'] ?></td>
+                    <td><?= $row['max_created_at'] ?></td>
                 </tr>
-            <?endforeach;?>
+            <? endforeach; ?>
             </tbody>
-        </table>    </div>
+        </table>
+    </div>
 </div>
+

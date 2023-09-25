@@ -29,16 +29,15 @@ class MysqlConnection extends PDO
      */
     public static function connection(): self
     {
-        if(empty(self::$connection)) {
+        if (empty(self::$connection)) {
             $dsn = sprintf(
                 'mysql:host=%s;dbname=%s;port=%s',
                 getenv('DB_MYSQL_HOST'),
                 getenv('DB_MYSQL_DBNAME'),
-                getenv('DB_MYSQL_PORT')
+                getenv('DB_MYSQL_PORT'),
             );
             self::$connection = new self($dsn, getenv('DB_MYSQL_USER'), getenv('DB_MYSQL_PASS'));
         }
         return self::$connection;
     }
-
 }

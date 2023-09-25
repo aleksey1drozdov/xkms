@@ -15,6 +15,7 @@ class Config
     /**
      * Config constructor.
      * @param string $configFile
+     * @throws Exception
      */
     public function __construct(string $configFile)
     {
@@ -27,29 +28,25 @@ class Config
      */
     private function prepare(): void
     {
-        try {
-            if (!file_exists($this->path)) {
-                throw new Exception('Config file not found');
+        if (!file_exists($this->path)) {
+            throw new Exception('Config file not found');
+        }
+        $file = file_get_contents($this->path);
+        $tmp = explode("\n", $file);
+        if (empty($tmp)) {
+            throw new Exception('Empty config file');
+        }
+        foreach ($tmp as $string) {
+            if (empty($string)) {
+                continue;
             }
-            $file = file_get_contents($this->path);
-            $tmp = explode("\n", $file);
-            if (empty($tmp)) {
-                throw new Exception('Empty config file');
+            [$var, $val] = explode("=", $string);
+            $var = trim($var);
+            $val = trim($val);
+            if (empty($var) && empty($val)) {
+                continue;
             }
-            foreach ($tmp as $string) {
-                if (empty($string)) {
-                    continue;
-                }
-                [$var, $val] = explode("=", $string);
-                $var = trim($var);
-                $val = trim($val);
-                if (empty($var) && empty($val)) {
-                    continue;
-                }
-                $this->save($var, $val);
-            }
-        } catch (Exception $e) {
-//TODO ????
+            $this->save($var, $val);
         }
     }
 

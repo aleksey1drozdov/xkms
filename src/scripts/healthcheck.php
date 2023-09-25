@@ -55,4 +55,3 @@ function checkClickhouseConnection(): bool
 dump(sprintf('Mysql: %s', checkMysqlDbConnection() ? 'on': 'off'));
 dump(sprintf('Clickhouse: %s', checkClickhouseConnection() ? 'on': 'off'));
 dump(sprintf('Rabbit: %s', checkRabbitConnection() ? 'on': 'off'));
-
