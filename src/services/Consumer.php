@@ -51,11 +51,11 @@ class Consumer extends DaemonAbstract
         $msg = $this->channel->basic_get($this->queue);
 
         if (null !== $msg) {
-            $this->channel->basic_ack($msg->getDeliveryTag(), true);
-
             $messageBytes = (new UrlParser())->parse($msg->body);
 
             (new DbStorage())->save($msg->body, $messageBytes);
+
+            $this->channel->basic_ack($msg->getDeliveryTag(), true);
 
             $this->logger->debug('CONSUMER GET MESSAGE', ['msg' => $msg->body, 'bytes' => $messageBytes]);
         }

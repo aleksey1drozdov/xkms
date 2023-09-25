@@ -1,3 +1,7 @@
+# healthcheck
+```bash
+make healthcheck
+```
 # Запуск проект
 ```bash
 make run
