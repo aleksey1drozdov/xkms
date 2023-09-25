@@ -1,0 +1,7 @@
+.idea
+vendor
+docker/db/data
+docker/clickhouse/data
+docker/clickhouse/log
+storage/logs
+composer.lock
